@@ -36,7 +36,7 @@ jobs:
         run: |
           wget -O ./cat/xiao2/index.js.md5 https://9280.kstore.vip/cat/index.js.md5
           wget -O ./cat/xiao2/index.js https://9280.kstore.vip/cat/index.js
-          wget -O /cat/xiao2/index.config.js https://9280.kstore.vip/cat/index.config.js
+          wget -O ./cat/xiao2/index.config.js https://9280.kstore.vip/cat/index.config.js
           wget -O ./cat/xiao2/index.config.js.md5 https://9280.kstore.vip/cat/index.config.js.md5
 
       - name: Commit and push if there are changes
