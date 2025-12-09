@@ -21,7 +21,7 @@ jobs:
           wget -q https://9280.kstore.vip/cat/index.js.md5 -O remote.md5
 
           # 检查本地 MD5 文件是否存在，或者是否与远程文件不同
-          if [ ! -f /cat/xiao2/index.js.md5 ] || ! cmp -s remote.md5 index.js.md5; then
+          if [ ! -f ./cat/xiao2/index.js.md5 ] || ! cmp -s remote.md5 index.js.md5; then
             echo "MD5 has changed or local MD5 not found. Fetching files."
             echo "should_fetch=true" >> $GITHUB_OUTPUT
           else
@@ -34,10 +34,10 @@ jobs:
       - name: Fetch files if MD5 changed
         if: steps.md5_check.outputs.should_fetch == 'true'
         run: |
-          wget -O /cat/xiao2/index.js.md5 https://9280.kstore.vip/cat/index.js.md5
-          wget -O /cat/xiao2/index.js https://9280.kstore.vip/cat/index.js
+          wget -O ./cat/xiao2/index.js.md5 https://9280.kstore.vip/cat/index.js.md5
+          wget -O ./cat/xiao2/index.js https://9280.kstore.vip/cat/index.js
           wget -O /cat/xiao2/index.config.js https://9280.kstore.vip/cat/index.config.js
-          wget -O /cat/xiao2/index.config.js.md5 https://9280.kstore.vip/cat/index.config.js.md5
+          wget -O ./cat/xiao2/index.config.js.md5 https://9280.kstore.vip/cat/index.config.js.md5
 
       - name: Commit and push if there are changes
         if: steps.md5_check.outputs.should_fetch == 'true'
